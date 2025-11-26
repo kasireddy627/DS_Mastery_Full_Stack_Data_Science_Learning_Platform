@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ module.title }} · DS Mastery{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="fw-bold">{{ module.title }}</h2>
+        <p class="text-muted">{{ module.description }}</p>
+        <hr>
+        <div class="module-content">
+          {{ module.content_html|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="col-lg-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <p><strong>Status:</strong>
+          {% if module.is_free %} <span class="badge bg-success">Free</span>
+          {% else %} <span class="badge bg-warning text-dark">Paid</span> {% endif %}
+        </p>
+
+        {% if not module.is_free %}
+          {% if current_user.is_authenticated and current_user.has_active_subscription() %}
+            <div class="alert alert-success">You have access</div>
+          {% else %}
+            <a class="btn btn-primary w-100" href="{{ url_for('payments.checkout', months=1) }}">Subscribe — ₹499 / month</a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </aside>
+</div>
+{% endblock %}

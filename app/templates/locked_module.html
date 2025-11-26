@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="alert alert-warning">
+      <h4 class="alert-heading">{{ module.title }}</h4>
+      <p>{{ module.description }}</p>
+      <hr>
+      {% if current_user.is_authenticated %}
+        <a class="btn btn-primary" href="{{ url_for('payments.checkout', months=1) }}">Subscribe to Unlock</a>
+      {% else %}
+        <a class="btn btn-outline-primary" href="{{ url_for('auth.login') }}">Login to Subscribe</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h3 class="mb-3">Welcome, {{ current_user.full_name or current_user.email }}</h3>
+
+    {% if current_user.has_active_subscription() %}
+      <div class="alert alert-success">Subscription active until {{ current_user.subscription.end_date.strftime('%Y-%m-%d') if current_user.subscription.end_date else 'N/A' }}</div>
+    {% else %}
+      <div class="alert alert-warning">No active subscription. <a href="{{ url_for('payments.checkout', months=1) }}">Subscribe now</a></div>
+    {% endif %}
+
+    <h5 class="mt-4">Your Modules</h5>
+    <div class="list-group">
+      {% for m in modules %}
+        <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="{{ url_for('main.module_page', slug=m.slug) }}">
+          <div>
+            <strong>{{ m.title }}</strong>
+            <div class="small text-muted">{{ m.description[:100] }}{% if m.description|length>100 %}...{% endif %}</div>
+          </div>
+          <div>
+            {% if m.is_free %}<span class="badge bg-success">Free</span>{% else %}
+              {% if current_user.has_active_subscription() %}
+                <span class="badge bg-primary">Unlocked</span>
+              {% else %}
+                <span class="badge bg-warning text-dark">Paid</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm mb-3">
+      <div class="card-body">
+        <h6>Account</h6>
+        <p class="mb-1"><strong>Email:</strong> {{ current_user.email }}</p>
+        <p class="mb-1"><strong>Member since:</strong> {{ current_user.created_at.strftime('%Y-%m-%d') }}</p>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h6>Support</h6>
+        <p class="small text-muted">Need help? Email <a href="mailto:support@example.com">support@example.com</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

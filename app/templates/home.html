@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Home · DS Mastery{% endblock %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="row align-items-center mb-5">
+  <div class="col-md-7">
+    <h1 class="display-5 fw-bold">Master Data Science — From Basics to MLOps</h1>
+    <p class="lead text-muted">
+      Free intros available. Subscribe to unlock full modules, projects and certificates.
+    </p>
+    <div class="mt-4">
+      <a class="btn btn-primary btn-lg me-2" href="{{ url_for('main.free_list') }}">
+        Browse Free Modules
+      </a>
+      <a class="btn btn-outline-secondary btn-lg" href="{{ url_for('auth.signup') }}">
+        Get Started
+      </a>
+    </div>
+  </div>
+
+  <div class="col-md-5 text-center">
+    <img src="{{ url_for('static', filename='images/Data Science.png') }}"
+         alt="Data science"
+         class="img-fluid rounded shadow-sm">
+  </div>
+</div>
+
+<!-- FEATURED MODULES -->
+<h3 class="mb-3">Featured Modules</h3>
+
+<!-- Debug line (optional) -->
+<!-- <p>Total modules loaded: {{ featured|length }}</p> -->
+
+<div class="row g-3">
+  {% for m in featured %}
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-body d-flex flex-column">
+
+        <h5 class="card-title">{{ m.title }}</h5>
+
+        <p class="card-text text-muted flex-grow-1">
+          {{ m.description[:130] }}
+          {% if m.description and m.description|length > 130 %}...{% endif %}
+        </p>
+
+        <div class="mt-3 d-flex justify-content-between align-items-center">
+          {% if m.is_free %}
+            <span class="badge bg-success">Free</span>
+          {% else %}
+            <span class="badge bg-warning text-dark">Paid</span>
+          {% endif %}
+          <a class="btn btn-sm btn-outline-primary"
+             href="{{ url_for('main.module_page', slug=m.slug) }}">
+            Open
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<hr class="my-5">
+
+<!-- CURRICULUM SECTION -->
+<section id="curriculum">
+  <h3>Full Curriculum (Overview)</h3>
+
+  <div class="row">
+    <div class="col-md-6">
+      <ul>
+        <li>Python for Data Science</li>
+        <li>Data Cleaning & EDA</li>
+        <li>Statistics & Probability</li>
+        <li>SQL and PowerBI</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <ul>
+        <li>Machine Learning</li>
+        <li>Deep Learning</li>
+        <li>Computer Vision</li>
+        <li>MLOps</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

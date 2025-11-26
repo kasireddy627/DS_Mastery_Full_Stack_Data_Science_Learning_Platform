@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Add New Module</h3>
+
+<form method="POST">
+  <div class="mb-3">
+    <label>Slug</label>
+    <input type="text" name="slug" class="form-control" required placeholder="example: intro-data-science">
+  </div>
+
+  <div class="mb-3">
+    <label>Title</label>
+    <input type="text" name="title" class="form-control" required placeholder="Module Title">
+  </div>
+
+  <div class="mb-3">
+    <label>Description</label>
+    <textarea name="description" class="form-control" rows="3"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label>Order</label>
+    <input type="number" name="order" class="form-control" value="1">
+  </div>
+
+  <div class="mb-3 form-check">
+    <input type="checkbox" name="is_free" class="form-check-input" id="freeCheck">
+    <label for="freeCheck" class="form-check-label">Free Module?</label>
+  </div>
+
+  <div class="mb-3">
+    <label>HTML Content</label>
+    <textarea name="content_html" class="form-control" rows="12" placeholder="<h2>Title</h2>"></textarea>
+  </div>
+
+  <button class="btn btn-success">Create Module</button>
+</form>
+
+{% endblock %}
