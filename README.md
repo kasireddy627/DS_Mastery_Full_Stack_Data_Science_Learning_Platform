@@ -1,430 +1,221 @@
 ```markdown
+# DS Mastery – Data Science Learning Platform
 
-\# DS Mastery – Data Science Learning Platform  
+A complete end-to-end Data Science learning website built with Flask, featuring free and paid modules, an admin panel, user authentication, payment integration support, and dynamic content rendering.
 
-A complete end-to-end Data Science learning website built with Flask, featuring free and paid modules, an admin panel, user authentication, payment integration, and dynamic content management.
+---
 
+## Overview
 
+DS Mastery is a full-stack educational platform designed to help users learn Data Science from beginner to advanced levels, including machine learning and MLOps.  
+This platform includes:
 
+- User authentication (login and signup)
+- Admin dashboard to manage modules
+- Free and paid learning modules
+- Dynamic HTML content rendering
+- Razorpay-ready payment integration structure
+- Course progress tracking
+- Responsive UI using Bootstrap
 
+---
 
+## Key Features
 
+### Authentication
+- Secure login and signup system  
+- Password hashing  
+- Session management with Flask-Login  
 
-\## Overview  
+### Admin Panel
+- Add, edit, and delete learning modules  
+- Manage module order and visibility  
+- Mark modules as Free or Paid  
+- Supports rich text / HTML content  
 
-DS Mastery is a full-stack educational platform designed to teach Data Science from beginner basics to advanced MLOps.  
+### Learning Modules
+- Unlimited module support  
+- SEO-friendly slugs  
+- Dynamic content rendering  
+- Separate free and paid module access  
 
-The platform includes:
+### Payments
+- Razorpay integration structure included  
+- Subscription model ready  
+- Locked module preview for unpaid users  
 
+### Progress Tracking
+- Track module completion  
+- Save last viewed module  
+- Extendable to quizzes and certificates  
 
+---
 
-\- User authentication (login and signup)
+## Tech Stack
 
-\- Admin dashboard to manage modules
+**Backend**
+- Python  
+- Flask  
+- Flask-Login  
+- Flask-SQLAlchemy  
+- Flask-Migrate  
 
-\- Free and paid learning modules
+**Database**
+- SQLite (Development)
+- PostgreSQL (Recommended for Production)
 
-\- Razorpay-ready payment integration
+**Frontend**
+- HTML, CSS  
+- Bootstrap 5  
+- Jinja2 Templates  
 
-\- Rich HTML content rendering
+**Payments**
+- Razorpay API (Integration Ready)
 
-\- Course progress tracking
+**Deployment**
+- Render  
+- PythonAnywhere  
+- Railway  
 
-\- Responsive UI using Bootstrap
+---
 
-
-
-
-
-
-
-\## Key Features  
-
-
-
-\### Authentication  
-
-\- Secure login and signup  
-
-\- Password hashing  
-
-\- Session management using Flask-Login  
-
-
-
-\### Admin Panel  
-
-\- Add, edit, and delete modules  
-
-\- Manage module order and visibility  
-
-\- Mark modules as free or paid  
-
-\- Rich text (HTML) content support  
-
-
-
-\### Learning Modules  
-
-\- Unlimited modules support  
-
-\- SEO-friendly slugs  
-
-\- Dynamic rendering of module content  
-
-\- Separate paid and free access handling  
-
-
-
-\### Payments  
-
-\- Razorpay integration structure ready  
-
-\- Subscription logic included  
-
-\- Locked module preview for non-subscribers  
-
-
-
-\### Progress Tracking  
-
-\- Track module completion  
-
-\- Save last viewed module  
-
-\- Ready for quizzes and certificates  
-
-
-
-
-
-
-
-\## Tech Stack  
-
-
-
-\*\*Backend:\*\*  
-
-\- Python  
-
-\- Flask  
-
-\- Flask-Login  
-
-\- Flask-SQLAlchemy  
-
-\- Flask-Migrate  
-
-
-
-\*\*Database:\*\*  
-
-\- SQLite (development)  
-
-\- PostgreSQL recommended for production  
-
-
-
-\*\*Frontend:\*\*  
-
-\- HTML, CSS  
-
-\- Bootstrap 5  
-
-\- Jinja2 Templates  
-
-
-
-\*\*Payments:\*\*  
-
-\- Razorpay API (integration ready)
-
-
-
-\*\*Deployment:\*\*  
-
-\- Render, PythonAnywhere, Railway
-
-
-
-
-
-
-
-\## Project Structure  
-
-
+## Project Structure
 
 ```
-
-
 
 project/
-
 │── run.py
-
 │── config.py
-
 │── requirements.txt
-
 │── README.md
-
 │── instance/
-
 │     └── app.db
-
 │
-
 ├── app/
-
-│     ├── \*\*init\*\*.py
-
+│     ├── **init**.py
 │     ├── main.py
-
-│     ├── admin\_ui.py
-
+│     ├── admin_ui.py
 │     ├── auth.py
-
 │     ├── models.py
-
 │     ├── payments.py
-
 │     │
-
 │     ├── templates/
-
 │     │     ├── base.html
-
 │     │     ├── home.html
-
 │     │     ├── module.html
-
+│     │     ├── locked_module.html
 │     │     ├── admin/
-
 │     │     └── auth/
-
 │     │
-
 │     └── static/
-
 │           ├── css/
-
 │           ├── js/
-
 │           └── images/
-
 │
-
 └── migrations/
 
-
-
 ````
 
+---
 
+## How to Run Locally
 
-
-
-
-
-\## How to Run Locally  
-
-
-
-\### 1. Create a Virtual Environment  
-
+### 1. Create a Virtual Environment
 ```bash
-
 python -m venv venv
-
 ````
 
+### 2. Activate Virtual Environment
 
-
-\### 2. Activate Environment
-
-
-
-Windows:
-
-
+**Windows:**
 
 ```bash
-
-venv\\Scripts\\activate
-
+venv\Scripts\activate
 ```
 
-
-
-Mac/Linux:
-
-
+**Mac/Linux:**
 
 ```bash
-
 source venv/bin/activate
-
 ```
 
-
-
-\### 3. Install Dependencies
-
-
+### 3. Install Dependencies
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
+### 4. Initialize Database
 
-
-\### 4. Initialize Database
-
-
-
-If migrations exist:
-
-
+If migrations already exist:
 
 ```bash
-
 flask db upgrade
-
 ```
-
-
 
 If starting fresh:
 
-
-
 ```bash
-
 flask db init
-
 flask db migrate
-
 flask db upgrade
-
 ```
 
-
-
-\### 5. Start Application
-
-
+### 5. Run Application
 
 ```bash
-
 flask run
-
 ```
 
-
-
-Application runs at:
-
-
+Your application will be available at:
 
 ```
-
 http://127.0.0.1:5000
-
 ```
 
+---
 
+## Deployment (Render)
 
-
-
-
-
-\## Deployment (Render)
-
-
-
-1\. Push project to GitHub
-
-2\. Create a new Web Service on Render
-
-3\. Build Command:
-
-
+1. Push your project to GitHub
+2. Create a new Web Service on Render
+3. Set **Build Command**:
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
-
-
-4\. Start Command:
-
-
+4. Set **Start Command**:
 
 ```bash
-
 gunicorn run:app
-
 ```
 
+Render will automatically install dependencies and deploy your Flask app.
 
+---
 
-Render will automatically configure the environment.
+## Future Enhancements
 
+* Interactive quizzes
+* Certificate generation
+* Student analytics dashboard
+* Notebook execution support
+* MLOps pipeline module
+* Recommendation engine
 
+---
 
+## Author
 
+**Kambalapalle Kasi Reddy**
+Data Science Developer & Full Stack Developer
 
+---
 
+## License
 
-\## Future Enhancements
+All Rights Reserved.
 
-
-
-\* Interactive quizzes
-
-\* Certificate generation
-
-\* Student dashboard
-
-\* Notebook execution support
-
-\* MLOps pipeline module
-
-\* Recommendation engine
-
-
-
-
-
-
-
-\## Author
-
-
-
-Kambalapalle Kasi Reddy
-
-Data Science Developer and Full Stack Developer
-
-
-
-
-
-
-
-\## License
-
-
-
-All Rights Reserved
-
-
-
-```markdown
+```
 
