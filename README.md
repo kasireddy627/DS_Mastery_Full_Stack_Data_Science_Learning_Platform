@@ -2,7 +2,7 @@
 
 A complete end-to-end Data Science learning website built with Flask, featuring free and paid modules, an admin panel, user authentication, payment integration support, and dynamic content rendering.
 
----
+
 
 ## Overview
 
@@ -18,7 +18,7 @@ This platform includes:
 * Course progress tracking
 * Responsive UI using Bootstrap
 
----
+
 
 ## Key Features
 
@@ -179,7 +179,7 @@ flask run
 App URL:
 [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
----
+
 
 ## Deployment (Render)
 
@@ -197,7 +197,7 @@ pip install -r requirements.txt
 gunicorn run:app
 ```
 
----
+
 
 ## Future Enhancements
 
@@ -208,7 +208,7 @@ gunicorn run:app
 * MLOps pipeline module
 * Recommendation engine
 
----
+
 
 ## Author
 
